@@ -1,42 +1,57 @@
+"""
+Setup script for gloss_translator package.
+"""
+
+import os
 from setuptools import setup, find_packages
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    long_description = fh.read()
+# Read the contents of README file
+with open(os.path.join(os.path.dirname(__file__), "README.md"), encoding="utf-8") as f:
+    long_description = f.read()
+
+# Read version from package
+with open("gloss_translator/__init__.py", encoding="utf-8") as f:
+    for line in f:
+        if line.startswith("__version__"):
+            version = line.split("=")[1].strip().strip('"\'')
+            break
 
 setup(
     name="gloss_translator",
-    version="0.1.0",
-    author="Your Name",
-    author_email="your.email@example.com",
-    description="English to Sign Language Gloss Translation",
+    version=version,
+    description="A package for translating English text to gloss notation",
     long_description=long_description,
     long_description_content_type="text/markdown",
+    author="Your Name",
+    author_email="your.email@example.com",
     url="https://github.com/yourusername/gloss_translator",
     packages=find_packages(),
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires=">=3.7",
     install_requires=[
         "torch>=1.9.0",
-        "transformers>=4.11.0",
+        "transformers>=4.18.0",
+        "nltk>=3.7",
         "pandas>=1.3.0",
-        "nltk>=3.6.0",
+        "numpy>=1.20.0",
         "jiwer>=2.3.0",
-        "scikit-learn>=0.24.0",
     ],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    ],
+    python_requires=">=3.8",
     entry_points={
-        'console_scripts': [
-            'gloss-translate=gloss_translator.cli:translate_cli',
-            'gloss-evaluate=gloss_translator.cli:evaluate_cli',
-            'gloss-train=gloss_translator.cli:train_cli',
+        "console_scripts": [
+            "translate-gloss=gloss_translator.cli:main",
         ],
     },
     include_package_data=True,
     package_data={
-        # If you want to include the default model, uncomment this
-        # "gloss_translator": ["model/*"],
+        "gloss_translator": ["data/*.json"],
     },
 )
