@@ -1,3 +1,20 @@
-transformers==4.40.0
-torch
-pandas
+# Core dependencies
+torch>=1.9.0
+transformers>=4.18.0
+nltk>=3.7
+pandas>=1.3.0
+numpy>=1.20.0
+
+# Evaluation metrics
+jiwer>=2.3.0
+
+# Optional dependencies
+tqdm>=4.62.0  # Progress bars
+matplotlib>=3.5.0  # For visualizations
+scikit-learn>=1.0.0  # For train-test splits and metrics
+
+# Development dependencies (not required for normal usage)
+pytest>=7.0.0  # For testing
+black>=22.1.0  # For code formatting
+flake8>=4.0.0  # For linting
+sphinx>=4.4.0  # For documentation
