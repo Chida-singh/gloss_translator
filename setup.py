@@ -22,9 +22,9 @@ setup(
     description="A package for translating English text to gloss notation",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    author="Your Name",
-    author_email="your.email@example.com",
-    url="https://github.com/yourusername/gloss_translator",
+    author="Chida Singh",
+    author_email="singh.chida@2004@gmail.com",
+    url="https://github.com/Chida-singh/gloss_translator",
     packages=find_packages(),
     install_requires=[
         "torch>=1.9.0",
